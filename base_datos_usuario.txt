@@ -1,0 +1,56 @@
+create database TAREA
+use TAREA
+
+CREATE TABLE usuario (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Numero INT NOT NULL,
+    FechaHora DATETIME NOT NULL,
+    NombreApellido VARCHAR(100) NOT NULL
+)go
+--PROCEDIMIENTOS ALMACENADOS-
+CREATE PROCEDURE sp_Insertar
+    @Numero INT,
+    @FechaHora DATETIME,
+    @NombreApellido VARCHAR(100)
+AS
+BEGIN
+    INSERT INTO usuario(Numero, FechaHora, NombreApellido)
+    VALUES (@Numero, @FechaHora, @NombreApellido);
+END
+go
+
+--LISTAR--
+CREATE PROCEDURE sp_listar
+AS
+BEGIN
+    SELECT * FROM usuario;
+END
+go
+
+--editar--
+
+CREATE PROCEDURE sp_editar
+    @Id INT,
+    @Numero INT,
+    @FechaHora DATETIME,
+    @NombreApellido VARCHAR(100)
+AS
+BEGIN
+    UPDATE usuario
+    SET Numero = @Numero,
+        FechaHora = @FechaHora,
+        NombreApellido = @NombreApellido
+    WHERE Id = @Id;
+END
+go
+--eliminar--
+
+CREATE PROCEDURE sp_Eliminar
+    @Id INT
+AS
+BEGIN
+    DELETE FROM usuario
+    WHERE Id = @Id;
+END
+go
+
