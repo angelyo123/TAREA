@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\tarea_ANGEL_SEBASTIAN_MACA_SANCHEZ.props" />
+</Project>
